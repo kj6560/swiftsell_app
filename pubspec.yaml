@@ -1,0 +1,32 @@
+name: swiftsell
+description: "Swiftsell Mobile application."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_bloc:
+  dio:
+  equatable:
+  flutter_secure_storage:
+  package_info_plus:
+  hive_flutter:
+  email_validator:
+  path_provider:
+  image_gallery_saver_plus:
+  permission_handler:
+  http:
+  mobile_scanner:
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
