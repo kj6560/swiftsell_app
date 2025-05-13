@@ -26,33 +26,22 @@ class _BaseScreenState extends State<BaseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        // Check if drawer is open
-        if (_scaffoldKey.currentState?.isDrawerOpen ?? false) {
-          Navigator.of(context).pop(); // Close the drawer
-          return false;
-        }
 
-        // Show exit confirmation dialog
-        return await showExitConfirmationDialog(context);
-      },
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: widget.appBarActions,
-        ),
-        drawer: AppDrawer(),
-        body: widget.body,
-        floatingActionButton: widget.onFabPressed != null
-            ? FloatingActionButton(
-          onPressed: widget.onFabPressed,
-          backgroundColor: Colors.teal,
-          child: Icon(widget.fabIcon, color: Colors.white),
-        )
-            : null,
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: widget.appBarActions,
       ),
+      drawer: AppDrawer(),
+      body: widget.body,
+      floatingActionButton: widget.onFabPressed != null
+          ? FloatingActionButton(
+        onPressed: widget.onFabPressed,
+        backgroundColor: Colors.teal,
+        child: Icon(widget.fabIcon, color: Colors.white),
+      )
+          : null,
     );
   }
 }

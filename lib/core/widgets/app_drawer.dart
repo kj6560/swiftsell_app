@@ -1,44 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../modules/auth/bloc/auth_bloc.dart';
+
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
-            child: Text('App Drawer', style: TextStyle(color: Colors.white)),
-          ),
-          ListTile(
-            title: Text('Home'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/home'),
-          ),
-          ListTile(
-            title: Text('Products'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/list_product'),
-          ),
-          ListTile(
-            title: Text('Inventory'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/list_inventory'),
-          ),
-          ListTile(
-            title: Text('Orders'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/list_sales'),
-          ),
-          ListTile(
-            title: Text('Customers'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/list_customers'),
-          ),
-          ListTile(
-            title: Text('Logout'),
-            onTap: () => context.read<AuthBloc>().add(LogoutEvent()),
-          ),
-        ],
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.teal, Colors.tealAccent],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              accountName: Text("SwiftSwll"),
+              accountEmail: Text("hello@swiftswll.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(Icons.person, size: 40, color: Colors.indigo),
+              ),
+            ),
+            _buildDrawerItem(
+              icon: Icons.home,
+              text: 'Home',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/home');
+              },
+            ),
+            _buildDrawerItem(
+              icon: Icons.shopping_bag,
+              text: 'Products',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/list_product');
+              },
+            ),
+            _buildDrawerItem(
+              icon: Icons.inventory,
+              text: 'Inventory',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/list_inventory');
+              },
+            ),
+            _buildDrawerItem(
+              icon: Icons.receipt_long,
+              text: 'Orders',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/list_sales');
+              },
+            ),
+            _buildDrawerItem(
+              icon: Icons.people,
+              text: 'Customers',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/list_customers');
+              },
+            ),
+            Divider(),
+            _buildDrawerItem(
+              icon: Icons.logout,
+              text: 'Logout',
+              onTap: () {
+                Navigator.pop(context);
+                context.read<AuthBloc>().add(LogoutEvent());
+              },
+              color: Colors.red,
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildDrawerItem({
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+    Color? color,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: color ?? Colors.black87),
+      title: Text(
+        text,
+        style: TextStyle(
+          color: color ?? Colors.black87,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      hoverColor: Colors.grey[200],
+      onTap: onTap,
     );
   }
 }

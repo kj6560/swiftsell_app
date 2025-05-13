@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swiftsell/modules/home/views/home.dart';
+import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
 import 'package:swiftsell/modules/products/views/products_list.dart';
 
@@ -42,7 +43,7 @@ class AppRoutes {
       case login:
         return MaterialPageRoute(builder: (_) => LoginController());
       case home:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(builder: (_) => HomeController());
       case listProduct:
         return MaterialPageRoute(builder: (_) => ProductsListController());
       case listSales:

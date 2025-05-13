@@ -6,6 +6,7 @@ import 'package:swiftsell/modules/auth/bloc/auth_bloc.dart';
 
 import 'core/local/hive_Services.dart';
 import 'core/routes.dart';
+import 'modules/home/bloc/home_bloc.dart';
 import 'modules/products/bloc/product_bloc.dart';
 
 
@@ -26,9 +27,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) {
           return AuthBloc();
         }),
-        // BlocProvider(create: (context) {
-        //   return HomeBloc();
-        // }),
+        BlocProvider(create: (context) {
+          return HomeBloc();
+        }),
         // BlocProvider(create: (context) {
         //   return SalesBloc();
         // }),

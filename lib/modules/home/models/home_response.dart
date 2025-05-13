@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../config/endpoints.dart';
+import '../../../core/config/endpoints.dart';
 
 class HomeRepositoryImpl {
   final Dio dio = Dio();
@@ -20,6 +20,7 @@ class HomeRepositoryImpl {
         ),
         //data: jsonEncode(body),
       );
+      print(response);
       return response;
     } catch (e, stacktrace) {
       print(e.toString());
