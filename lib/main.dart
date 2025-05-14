@@ -6,7 +6,12 @@ import 'package:swiftsell/modules/auth/bloc/auth_bloc.dart';
 
 import 'core/local/hive_Services.dart';
 import 'core/routes.dart';
+import 'modules/Organization/bloc/organization_bloc.dart';
+import 'modules/Schemes/bloc/scheme_bloc.dart';
+import 'modules/customers/bloc/customers_bloc.dart';
 import 'modules/home/bloc/home_bloc.dart';
+import 'modules/inventory/bloc/inventory_bloc.dart';
+import 'modules/orders/bloc/sales_bloc.dart';
 import 'modules/products/bloc/product_bloc.dart';
 
 
@@ -30,27 +35,27 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) {
           return HomeBloc();
         }),
-        // BlocProvider(create: (context) {
-        //   return SalesBloc();
-        // }),
-        // BlocProvider(create: (context) {
-        //   return InventoryBloc();
-        // }),
+        BlocProvider(create: (context) {
+          return SalesBloc();
+        }),
+        BlocProvider(create: (context) {
+          return InventoryBloc();
+        }),
         BlocProvider(create: (context) {
           return ProductBloc();
         }),
-        // BlocProvider(create: (context) {
-        //   return CustomersBloc();
-        // }),
-        // BlocProvider(create: (context) {
-        //   return SchemeBloc();
-        // }),
+        BlocProvider(create: (context) {
+          return CustomersBloc();
+        }),
+        BlocProvider(create: (context) {
+          return SchemeBloc();
+        }),
         // BlocProvider(create: (context) {
         //   return SettingsBloc();
         // }),
-        // BlocProvider(create: (context) {
-        //   return OrganizationBloc();
-        // }),
+        BlocProvider(create: (context) {
+          return OrganizationBloc();
+        }),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

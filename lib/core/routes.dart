@@ -4,12 +4,22 @@ import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
 import 'package:swiftsell/modules/products/views/products_list.dart';
 
+import '../modules/Schemes/views/scheme_details_controller.dart';
+import '../modules/Schemes/views/scheme_list_controller.dart';
 import '../modules/auth/views/login_controller.dart';
 import '../modules/customers/views/CustomersListController.dart';
+import '../modules/customers/views/edit_customer_controller.dart';
+import '../modules/customers/views/new_customer_controller.dart';
 import '../modules/home/views/entry.dart';
-import '../modules/inventory/views/InventoryListController.dart';
-import '../modules/orders/views/SalesListController.dart';
+import '../modules/inventory/views/inventory_detail_controller.dart';
+import '../modules/inventory/views/inventory_list_controller.dart';
+import '../modules/inventory/views/new_inventory_controller.dart';
+import '../modules/orders/views/new_sale_controller.dart';
+import '../modules/orders/views/sales_detail_controller.dart';
+import '../modules/orders/views/sales_list_controller.dart';
+import '../modules/products/views/edit_product_controller.dart';
 import '../modules/products/views/new_product_controller.dart';
+import '../modules/products/views/product_detail_controller.dart';
 
 class AppRoutes {
   static const String entry = '/entry';
@@ -52,76 +62,74 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => CustomersListController());
       case listInventory:
         return MaterialPageRoute(builder: (_) => InventoryListController());
-      // case listProduct:
-      //   return MaterialPageRoute(builder: (_) => ProductListController());
-      // case listSchemes:
-      //   return MaterialPageRoute(builder: (_) => SchemeListController());
+      case listSchemes:
+        return MaterialPageRoute(builder: (_) => SchemeListController());
       // case appSettings:
       //   return MaterialPageRoute(builder: (_) => SettingsController());
       case newProduct:
         return MaterialPageRoute(builder: (_) => NewProductController());
-      // case editProduct:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return EditProductController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
-      // case editCustomer:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return EditCustomerController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
-      // case newSale:
-      //   return MaterialPageRoute(builder: (_) => NewSaleController());
-      // case newCustomer:
-      //   return MaterialPageRoute(builder: (_) => NewCustomerController());
+      case editProduct:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return EditProductController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
+      case editCustomer:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return EditCustomerController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
+      case newSale:
+        return MaterialPageRoute(builder: (_) => NewSaleController());
+      case newCustomer:
+        return MaterialPageRoute(builder: (_) => NewCustomerController());
       // case newScheme:
       //   return MaterialPageRoute(builder: (_) => NewSchemeController());
-      // case newInventory:
-      //   return MaterialPageRoute(builder: (_) => NewInventoryController());
-      // case salesDetails:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return SalesDetailController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
-      // case inventoryDetails:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return InventoryDetailController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
-      // case productDetails:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return ProductDetailController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
-      // case schemeDetails:
-      //   return MaterialPageRoute(
-      //     builder: (context) {
-      //       final args =
-      //           settings.arguments as Map<String, dynamic>?; // Get arguments
-      //       return SchemeDetailsController(); // Pass arguments if necessary
-      //     },
-      //     settings: settings, // Ensure arguments are attached to the route
-      //   );
+      case newInventory:
+        return MaterialPageRoute(builder: (_) => NewInventoryController());
+      case salesDetails:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return SalesDetailController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
+      case inventoryDetails:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return InventoryDetailController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
+      case productDetails:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return ProductDetailController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
+      case schemeDetails:
+        return MaterialPageRoute(
+          builder: (context) {
+            final args =
+                settings.arguments as Map<String, dynamic>?; // Get arguments
+            return SchemeDetailsController(); // Pass arguments if necessary
+          },
+          settings: settings, // Ensure arguments are attached to the route
+        );
       // case createOrg:
       //   return MaterialPageRoute(
       //       builder: (_) => CreateOrganizationController());

@@ -23,6 +23,8 @@ dependencies:
   http:
   mobile_scanner:
   font_awesome_flutter:
+  image_picker:
+  print_bluetooth_thermal:
 dev_dependencies:
   flutter_test:
     sdk: flutter

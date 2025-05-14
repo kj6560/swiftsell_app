@@ -1,4 +1,4 @@
-library customers_list_library;
+library inventory_library;
 
 import 'dart:convert';
 
@@ -11,20 +11,20 @@ import '../../../../core/routes.dart';
 import '../../../../core/widgets/base_screen.dart';
 import '../../../../core/widgets/base_widget.dart';
 import '../../auth/models/User.dart';
-import '../bloc/customers_bloc.dart';
-import '../models/customers_model.dart';
+import '../bloc/inventory_bloc.dart';
+import '../models/inventory_model.dart';
 
-part 'customers_list_screen.dart';
+part 'inventory_list_screen.dart';
 
-class CustomersListController extends StatefulWidget {
-  const CustomersListController({super.key});
+class InventoryListController extends StatefulWidget {
+  const InventoryListController({super.key});
 
   @override
-  State<CustomersListController> createState() =>
-      CustomersListControllerState();
+  State<InventoryListController> createState() =>
+      InventoryListControllerState();
 }
 
-class CustomersListControllerState extends State<CustomersListController> {
+class InventoryListControllerState extends State<InventoryListController> {
   String name = "";
   String email = "";
   bool hasActiveSubscription = false;
@@ -33,12 +33,13 @@ class CustomersListControllerState extends State<CustomersListController> {
       hasActiveSubscription = status;
     });
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     initAuthCred();
-    BlocProvider.of<CustomersBloc>(context).add(LoadCustomers());
+    BlocProvider.of<InventoryBloc>(context).add(LoadInventoryList());
   }
 
   void initAuthCred() async {
@@ -51,7 +52,5 @@ class CustomersListControllerState extends State<CustomersListController> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return CustomersListScreen(this);
-  }
+  Widget build(BuildContext context) => InventoryListUi(this);
 }

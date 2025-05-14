@@ -51,6 +51,14 @@ class AppDrawer extends StatelessWidget {
               },
             ),
             _buildDrawerItem(
+              icon: Icons.inventory,
+              text: 'Schemes',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/list_schemes');
+              },
+            ),
+            _buildDrawerItem(
               icon: Icons.receipt_long,
               text: 'Orders',
               onTap: () {
