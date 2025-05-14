@@ -1,6 +1,14 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../modules/auth/bloc/auth_bloc.dart';
+import '../../modules/auth/models/User.dart';
+import '../config/config.dart';
+import '../config/endpoints.dart';
+import '../local/hive_constants.dart';
+import '../routes.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -86,9 +94,16 @@ class AppDrawer extends StatelessWidget {
             _buildDrawerItem(
               icon: Icons.logout,
               text: 'Logout',
-              onTap: () {
-                Navigator.pop(context);
-                context.read<AuthBloc>().add(LogoutEvent());
+              onTap: () async {
+                bool loggedout = await logout();
+                if (loggedout) {
+                  BlocProvider.of<AuthBloc>(context).add(LoginReset());
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.entry,
+                        (route) => false,
+                  );
+                }
               },
               color: Colors.red,
             ),
@@ -97,7 +112,39 @@ class AppDrawer extends StatelessWidget {
       ),
     );
   }
+  Future<bool> logout() async {
+    try {
+      String userJson = authBox.get(HiveKeys.userBox);
+      String token = authBox.get(HiveKeys.accessToken);
+      User _user = User.fromJson(jsonDecode(userJson));
 
+      var body = {'user_id': _user.id};
+      Dio dio = Dio();
+
+      Response response = await dio.get(
+        EndPoints.logoutUrl,
+        queryParameters: body,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
+
+      if (response.data != null && response.data is Map<String, dynamic>) {
+        await authBox.clear();
+        return response.data['success'] == true;
+      }
+
+      return false;
+    } catch (e, stacktrace) {
+      print('Logout failed: $e');
+      print(stacktrace);
+      return false;
+    }
+  }
   Widget _buildDrawerItem({
     required IconData icon,
     required String text,
