@@ -95,16 +95,52 @@ class AppDrawer extends StatelessWidget {
               icon: Icons.logout,
               text: 'Logout',
               onTap: () async {
-                bool loggedout = await logout();
-                if (loggedout) {
+                bool? confirm = await showDialog<bool>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Confirm Logout"),
+                    content: Text("Are you sure you want to logout?"),
+                    actions: [
+                      TextButton(
+                        child: Text("Cancel"),
+                        onPressed: () => Navigator.pop(context, false),
+                      ),
+                      ElevatedButton(
+                        child: Text("Logout"),
+                        onPressed: () => Navigator.pop(context, true),
+                      ),
+                    ],
+                  ),
+                );
+
+                if (confirm != true) return;
+
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+
+                bool loggedOut = await logout();
+
+                Navigator.pop(context); // Remove loading dialog
+
+                if (loggedOut) {
                   BlocProvider.of<AuthBloc>(context).add(LoginReset());
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    AppRoutes.entry,
+                    AppRoutes.login,
                         (route) => false,
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Logout failed. Please try again.")),
                   );
                 }
               },
+
               color: Colors.red,
             ),
           ],

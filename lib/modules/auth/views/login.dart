@@ -31,7 +31,7 @@ class Login extends WidgetView<Login, LoginControllerState> {
           }
 
           // Show login form for initial and failure states
-          if (state is AuthInitial || state is LoginFailure) {
+          if (state is LoginInitial || state is AuthInitial || state is LoginFailure) {
             return SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

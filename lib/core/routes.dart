@@ -4,6 +4,7 @@ import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
 import 'package:swiftsell/modules/products/views/products_list.dart';
 
+import '../modules/Organization/views/create_organization_controller.dart';
 import '../modules/Schemes/views/new_scheme_controller.dart';
 import '../modules/Schemes/views/scheme_details_controller.dart';
 import '../modules/Schemes/views/scheme_list_controller.dart';
@@ -132,9 +133,9 @@ class AppRoutes {
           },
           settings: settings, // Ensure arguments are attached to the route
         );
-      // case createOrg:
-      //   return MaterialPageRoute(
-      //       builder: (_) => CreateOrganizationController());
+      case createOrg:
+        return MaterialPageRoute(
+            builder: (_) => CreateOrganizationController());
       default:
         return MaterialPageRoute(builder: (_) => LoginController());
     }

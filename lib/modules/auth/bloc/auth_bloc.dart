@@ -27,8 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return;
   }
 
-  Future<void> _loginToServer(
-      LoginButtonPressed event, Emitter<AuthState> emit) async {
+  Future<void> _loginToServer(LoginButtonPressed event, Emitter<AuthState> emit) async {
     emit(LoginLoading()); // ✅ Emit loading state once
 
     try {
