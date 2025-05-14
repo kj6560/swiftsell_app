@@ -8,6 +8,7 @@ import 'core/local/hive_Services.dart';
 import 'core/routes.dart';
 import 'modules/Organization/bloc/organization_bloc.dart';
 import 'modules/Schemes/bloc/scheme_bloc.dart';
+import 'modules/Settings/bloc/settings_bloc.dart';
 import 'modules/customers/bloc/customers_bloc.dart';
 import 'modules/home/bloc/home_bloc.dart';
 import 'modules/inventory/bloc/inventory_bloc.dart';
@@ -50,9 +51,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) {
           return SchemeBloc();
         }),
-        // BlocProvider(create: (context) {
-        //   return SettingsBloc();
-        // }),
+        BlocProvider(create: (context) {
+          return SettingsBloc();
+        }),
         BlocProvider(create: (context) {
           return OrganizationBloc();
         }),

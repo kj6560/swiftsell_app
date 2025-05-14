@@ -74,6 +74,14 @@ class AppDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, '/list_customers');
               },
             ),
+            _buildDrawerItem(
+              icon: Icons.people,
+              text: 'Settings',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
             Divider(),
             _buildDrawerItem(
               icon: Icons.logout,

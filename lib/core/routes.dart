@@ -4,8 +4,10 @@ import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
 import 'package:swiftsell/modules/products/views/products_list.dart';
 
+import '../modules/Schemes/views/new_scheme_controller.dart';
 import '../modules/Schemes/views/scheme_details_controller.dart';
 import '../modules/Schemes/views/scheme_list_controller.dart';
+import '../modules/Settings/views/settings_controller.dart';
 import '../modules/auth/views/login_controller.dart';
 import '../modules/customers/views/CustomersListController.dart';
 import '../modules/customers/views/edit_customer_controller.dart';
@@ -64,8 +66,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => InventoryListController());
       case listSchemes:
         return MaterialPageRoute(builder: (_) => SchemeListController());
-      // case appSettings:
-      //   return MaterialPageRoute(builder: (_) => SettingsController());
+      case appSettings:
+        return MaterialPageRoute(builder: (_) => SettingsController());
       case newProduct:
         return MaterialPageRoute(builder: (_) => NewProductController());
       case editProduct:
@@ -90,8 +92,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => NewSaleController());
       case newCustomer:
         return MaterialPageRoute(builder: (_) => NewCustomerController());
-      // case newScheme:
-      //   return MaterialPageRoute(builder: (_) => NewSchemeController());
+      case newScheme:
+        return MaterialPageRoute(builder: (_) => NewSchemeController());
       case newInventory:
         return MaterialPageRoute(builder: (_) => NewInventoryController());
       case salesDetails:
