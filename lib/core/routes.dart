@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:swiftsell/modules/ContactUs/views/contact_us_controller.dart';
+import 'package:swiftsell/modules/ContactUs/views/contact_us_responses_controller.dart';
 import 'package:swiftsell/modules/home/views/home.dart';
 import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
@@ -48,7 +50,8 @@ class AppRoutes {
   static const String schemeDetails = '/scheme_details';
   static const String appSettings = '/settings';
   static const String createOrg = '/createOrganization';
-
+  static const String contactUs = '/contact_us';
+  static const String contactUsResponses = '/contact_us_responses';
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case entry:
@@ -136,6 +139,12 @@ class AppRoutes {
       case createOrg:
         return MaterialPageRoute(
             builder: (_) => CreateOrganizationController());
+      case contactUs:
+        return MaterialPageRoute(
+            builder: (_) => ContactUsController());
+      case contactUsResponses:
+        return MaterialPageRoute(
+            builder: (_) => ContactUsResponsesController());
       default:
         return MaterialPageRoute(builder: (_) => LoginController());
     }

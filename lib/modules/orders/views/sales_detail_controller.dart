@@ -101,7 +101,7 @@ class SalesDetailState extends State<SalesDetailController> {
   Future<void> printInvoice(String invoiceText) async {
     final userSettings = authBox.get(HiveKeys.settingsBox);
     if (userSettings == null) {
-      print("❌ No printer settings found.");
+      _showNoPrinterDialog();
       return;
     }
 
@@ -133,7 +133,25 @@ class SalesDetailState extends State<SalesDetailController> {
       print("❌ Printing failed: $e");
     }
   }
-
+  void _showNoPrinterDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('No Printer Found'),
+          content: Text('No printer settings were found. Please connect a printer first.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return SalesDetailScreen(this);

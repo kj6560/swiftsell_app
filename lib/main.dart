@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:swiftsell/modules/ContactUs/bloc/contact_us_bloc.dart';
 import 'package:swiftsell/modules/auth/bloc/auth_bloc.dart';
 
 import 'core/local/hive_Services.dart';
@@ -56,6 +57,9 @@ class MyApp extends StatelessWidget {
         }),
         BlocProvider(create: (context) {
           return OrganizationBloc();
+        }),
+        BlocProvider(create: (context) {
+          return ContactUsBloc();
         }),
       ],
       child: MaterialApp(

@@ -25,18 +25,20 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
           }
         },
         builder: (context, state) {
+          print("product list state: ${state}");
           if (state is LoadingProductList) {
-            return Center(
+            return const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   CircularProgressIndicator(color: Colors.teal),
                   SizedBox(height: 8),
                   Text("Loading"),
                 ],
               ),
             );
-          } else if (state is LoadProductSuccess) {
+          }
+          else if (state is LoadProductSuccess) {
             List<Product> allProducts = state.response;
             List<Product> filteredProducts = List.from(allProducts);
 
@@ -50,7 +52,7 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                         controller: _searchController,
                         decoration: InputDecoration(
                           hintText: "Search Products...",
-                          prefixIcon: Icon(Icons.search),
+                          prefixIcon: const Icon(Icons.search),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -74,7 +76,7 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                     ),
                     Expanded(
                       child: filteredProducts.isEmpty
-                          ? Center(child: Text("No products found"))
+                          ? const Center(child: Text("No products found"))
                           : ListView.builder(
                         itemCount: filteredProducts.length,
                         itemBuilder: (context, index) {
@@ -103,18 +105,18 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                                     children: [
                                       Text(
                                         product.name,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      SizedBox(height: 8),
+                                      const SizedBox(height: 8),
                                       Row(
                                         children: [
                                           Icon(Icons.qr_code,
                                               size: 18,
                                               color: Colors.grey[700]),
-                                          SizedBox(width: 6),
+                                          const SizedBox(width: 6),
                                           Text(
                                             "SKU: ",
                                             style: TextStyle(
@@ -127,20 +129,20 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                                             child: Text(
                                               product.sku,
                                               style:
-                                              TextStyle(fontSize: 16),
+                                              const TextStyle(fontSize: 16),
                                               overflow:
                                               TextOverflow.ellipsis,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 6),
+                                      const SizedBox(height: 6),
                                       Row(
                                         children: [
                                           Icon(Icons.currency_rupee,
                                               size: 18,
                                               color: Colors.green[700]),
-                                          SizedBox(width: 6),
+                                          const SizedBox(width: 6),
                                           Text(
                                             "${product.productMrp}",
                                             style: TextStyle(
@@ -173,8 +175,8 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                 ],
               ),
             );
-          } else {
-            return Center(
+          }else  {
+            return const Center(
               child: CircularProgressIndicator(color: Colors.teal),
             );
           }
@@ -183,19 +185,22 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
       onFabPressed: () {
         print("has subscription: ${controllerState.hasActiveSubscription}");
         if (controllerState.hasActiveSubscription) {
-          Navigator.pushNamed(context, AppRoutes.newProduct);
+          Navigator.pushNamed(context, AppRoutes.newProduct).then((_) {
+            // Re-fetch the product list when coming back
+            BlocProvider.of<ProductBloc>(context).add(LoadProductList());
+          });
         } else {
           showDialog(
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text("Subscription Required"),
-                content: Text(
+                title: const Text("Subscription Required"),
+                content: const Text(
                     "You don't have an active subscription. Please contact Admin."),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: Text("OK", style: TextStyle(color: Colors.teal)),
+                    child: const Text("OK", style: TextStyle(color: Colors.teal)),
                   ),
                 ],
               );
@@ -205,7 +210,7 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
       },
       appBarActions: [
         IconButton(
-          icon: Icon(Icons.local_offer, color: Colors.white),
+          icon: const Icon(Icons.local_offer, color: Colors.teal),
           onPressed: () {
             if (controllerState.hasActiveSubscription) {
               Navigator.popAndPushNamed(context, AppRoutes.listSchemes);
@@ -214,13 +219,13 @@ class ProductsList extends WidgetView<ProductsList, ProductsListControllerState>
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Subscription Required"),
-                    content: Text(
+                    title: const Text("Subscription Required"),
+                    content: const Text(
                         "You don't have an active subscription. Please contact Admin."),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.of(context).pop(),
-                        child: Text("OK", style: TextStyle(color: Colors.teal)),
+                        child: const Text("OK", style: TextStyle(color: Colors.teal)),
                       ),
                     ],
                   );

@@ -25,6 +25,9 @@ dependencies:
   font_awesome_flutter:
   image_picker:
   print_bluetooth_thermal:
+  url_launcher:
+  intl:
+  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter

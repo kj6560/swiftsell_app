@@ -29,9 +29,7 @@ class User {
       emailVerifiedAt: json['email_verified_at'],
       number: json['number'],
       orgId: json['org_id'],
-      profilePic: json['profile_pic'] != null
-          ? json['profile_pic']
-          : "https://via.placeholder.com/150",
+      profilePic: json['profile_pic'],
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
     );
@@ -43,6 +41,7 @@ class User {
       'email': email,
       'email_verified_at': emailVerifiedAt,
       'number': number,
+      'profile_pic':profilePic,
       'org_id': orgId,
       'created_at': createdAt,
       'updated_at': updatedAt,

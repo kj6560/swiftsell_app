@@ -29,4 +29,8 @@ class EndPoints {
   static const String generateBarcode = '${baseUrl}/api/generateBarcode';
 
   static const String createOrganization = '${baseUrl}/api/registerOrg';
+
+  static const String fetchContactResponses = '${baseUrl}/api/fetchContactResponses';
+  static const String createContactFromApp = '${baseUrl}/api/createContactFromApp';
+  static const String updateProfilePicture = '${baseUrl}/api/updateProfilePicture';
 }

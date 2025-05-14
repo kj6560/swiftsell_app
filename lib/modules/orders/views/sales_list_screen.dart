@@ -12,7 +12,10 @@ class SalesListUi extends WidgetView<SalesListUi, SalesListControllerState> {
 
         onFabPressed: () {
           if (controllerState.hasActiveSubscription) {
-            Navigator.pushNamed(context, AppRoutes.newSale);
+            Navigator.pushNamed(context, AppRoutes.newSale).then((_) {
+              // Re-fetch the sales list when coming back
+              BlocProvider.of<SalesBloc>(context).add(LoadSalesList());
+            });
           } else {
             showDialog(
               context: context,
