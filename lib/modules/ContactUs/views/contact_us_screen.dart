@@ -101,18 +101,26 @@ class ContactUsScreen extends WidgetView<ContactUsScreen, ContactUsControllerSta
   }
 
   // Function to make the phone call
+
   Future<void> _makePhoneCall() async {
-    const phoneNumber = 'tel:+1234567890';  // Replace with your actual contact number
+    const String phoneNumber = 'tel:+916202288651';
     final Uri url = Uri.parse(phoneNumber);
 
-    if (await canLaunch(url.toString())) {
+    // Request CALL_PHONE permission
+    PermissionStatus status = await Permission.phone.request();
+
+    if (status.isGranted) {
       try {
-        await launch(url.toString());
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          print("❌ Could not launch $url");
+        }
       } catch (e) {
-        print("❌ Could not launch $url: $e");
+        print("❌ Error while trying to call: $e");
       }
     } else {
-      print("❌ Could not launch $url");
+      print("❌ Permission denied");
     }
   }
 }

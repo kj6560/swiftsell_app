@@ -6,6 +6,7 @@ class User {
   String number;
   String? profilePic;
   int orgId;
+  int? role;
   String? createdAt;
   String? updatedAt;
 
@@ -16,6 +17,7 @@ class User {
     required this.emailVerifiedAt,
     required this.number,
     required this.orgId,
+    this.role,
     this.profilePic,
     this.createdAt,
     this.updatedAt,
@@ -29,6 +31,7 @@ class User {
       emailVerifiedAt: json['email_verified_at'],
       number: json['number'],
       orgId: json['org_id'],
+      role: json['role'],
       profilePic: json['profile_pic'],
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
@@ -43,6 +46,7 @@ class User {
       'number': number,
       'profile_pic':profilePic,
       'org_id': orgId,
+      'role':role,
       'created_at': createdAt,
       'updated_at': updatedAt,
     };

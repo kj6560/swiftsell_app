@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:swiftsell/core/widgets/base_screen.dart';
 import 'package:swiftsell/core/widgets/base_widget.dart';
 import 'package:swiftsell/modules/auth/models/User.dart';
