@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   int id;
   String name;
@@ -37,6 +39,7 @@ class User {
       updatedAt: json['updated_at'],
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -44,11 +47,28 @@ class User {
       'email': email,
       'email_verified_at': emailVerifiedAt,
       'number': number,
-      'profile_pic':profilePic,
+      'profile_pic': profilePic,
       'org_id': orgId,
-      'role':role,
+      'role': role,
       'created_at': createdAt,
       'updated_at': updatedAt,
     };
   }
+}
+
+/// Converts a JSON string to a User object.
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+/// Converts a User object to a JSON string.
+String userToJson(User data) => json.encode(data.toJson());
+
+/// Converts a JSON string to a List<User>.
+List<User> userListFromJson(String str) {
+  final jsonData = json.decode(str);
+  return List<User>.from(jsonData.map((x) => User.fromJson(x)));
+}
+
+/// Converts a List<User> to a JSON string.
+String userListToJson(List<User> data) {
+  return json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 }

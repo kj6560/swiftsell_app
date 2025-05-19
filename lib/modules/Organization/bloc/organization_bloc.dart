@@ -18,13 +18,10 @@ class OrganizationBloc extends Bloc<OrganizationEvent, OrganizationState> {
       CreateOrganizationRequested event, Emitter emit) async {
     emit(OrganizationLoading());
     try {
-      print(jsonEncode(event.orgData));
-      print(EndPoints.createOrganization);
       final response = await Dio().get(
         EndPoints.createOrganization,
         data: jsonEncode(event.orgData),
       );
-      print(response.data['statusCode']);
       if (response.data['statusCode'] == 200) {
         emit(OrganizationSuccess(response.data['message']));
       } else {

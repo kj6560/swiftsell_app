@@ -14,7 +14,6 @@ class SettingsScreen
           BluetoothInfo? printer;
           if (state is PrintersLoaded) {
             printer = state.selectedPrinter;
-            print(printer);
           }
 
           return ListView(
@@ -33,6 +32,19 @@ class SettingsScreen
                     ),
                   );
                 },
+              ),
+              ExpansionTile(
+                leading: Icon(Icons.people, color: Colors.teal),
+                title: Text("Users"),
+                children: [
+                  ListTile(
+                    title: Text("All Users"),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/user_list');
+                    },
+                  ),
+
+                ],
               ),
               // You can add more settings here
             ],

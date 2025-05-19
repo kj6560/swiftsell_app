@@ -30,7 +30,15 @@ class EndPoints {
 
   static const String createOrganization = '${baseUrl}/api/registerOrg';
 
-  static const String fetchContactResponses = '${baseUrl}/api/fetchContactResponses';
-  static const String createContactFromApp = '${baseUrl}/api/createContactFromApp';
-  static const String updateProfilePicture = '${baseUrl}/api/updateProfilePicture';
+  static const String fetchContactResponses =
+      '${baseUrl}/api/fetchContactResponses';
+  static const String createContactFromApp =
+      '${baseUrl}/api/createContactFromApp';
+
+  static const String updateProfilePicture =
+      '${baseUrl}/api/updateProfilePicture';
+  static const String fetchUsersByOrg = '${baseUrl}/api/fetchUsersByOrg';
+  static const String createNewUser = '${baseUrl}/api/createNewUser';
+  static const String deleteUser = '${baseUrl}/api/deleteUser';
+
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:swiftsell/modules/ContactUs/views/contact_us_controller.dart';
 import 'package:swiftsell/modules/ContactUs/views/contact_us_responses_controller.dart';
+import 'package:swiftsell/modules/Users/views/new_user_controller.dart';
+import 'package:swiftsell/modules/Users/views/users_list_controller.dart';
 import 'package:swiftsell/modules/home/views/home.dart';
 import 'package:swiftsell/modules/home/views/home_controller.dart';
 import 'package:swiftsell/modules/products/views/ProductsListController.dart';
@@ -52,6 +54,9 @@ class AppRoutes {
   static const String createOrg = '/createOrganization';
   static const String contactUs = '/contact_us';
   static const String contactUsResponses = '/contact_us_responses';
+  static const String userList = '/user_list';
+  static const String newUser = '/new_user';
+
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case entry:
@@ -138,13 +143,18 @@ class AppRoutes {
         );
       case createOrg:
         return MaterialPageRoute(
-            builder: (_) => CreateOrganizationController());
+          builder: (_) => CreateOrganizationController(),
+        );
       case contactUs:
-        return MaterialPageRoute(
-            builder: (_) => ContactUsController());
+        return MaterialPageRoute(builder: (_) => ContactUsController());
       case contactUsResponses:
         return MaterialPageRoute(
-            builder: (_) => ContactUsResponsesController());
+          builder: (_) => ContactUsResponsesController(),
+        );
+      case userList:
+        return MaterialPageRoute(builder: (_) => UsersListController());
+      case newUser:
+        return MaterialPageRoute(builder: (_) => NewUserController());
       default:
         return MaterialPageRoute(builder: (_) => LoginController());
     }

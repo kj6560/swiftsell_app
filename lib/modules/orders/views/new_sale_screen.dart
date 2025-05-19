@@ -248,8 +248,7 @@ class NewSaleScreen extends WidgetView<NewSaleScreen, NewSaleControllerState> {
     );
   }
 
-  Future<void> _showQuantityDialog(
-      BuildContext context, Product product) async {
+  Future<void> _showQuantityDialog( BuildContext context, Product product) async {
     // Default quantity
     if (_isDialogOpen) return; // Prevent opening multiple dialogs
     _isDialogOpen = true;
